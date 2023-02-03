@@ -9,15 +9,16 @@ import {
   Bar,
   ResponsiveContainer,
 } from "recharts";
-
+import PropTypes from "prop-types";
 import "./style.scss";
 
-const xAxisTickFormat = (value) => {
-  const valueDay = value.split("-");
-
-  return Number(valueDay[2]);
-};
-
+/**
+ * This component is dedicated to handle the tooltip of the activity graph
+ *
+ * @param {Array} payload Array containing elements to display in tooltip
+ * @param {Boolean} active true if tooltip currently displayed, false otherwise
+ * @returns {JSX.Element?}
+ */
 const CustomTooltip = ({ payload, active }) => {
   return active ? (
     <div className="activity-graph-tooltip">
@@ -27,18 +28,29 @@ const CustomTooltip = ({ payload, active }) => {
   ) : null;
 };
 
+/**
+ * This component display the activity of the desired user on a BarChart.
+ * This component realise the data acquisition using fetch on /user/:id/activity
+ * and is able to manage errors & loading in progress
+ *
+ * @param {Number} userId Reference id of the user to display
+ * @returns {JSX.Element?}
+ */
 const Activite = ({ userId }) => {
+  // data loading
+
   const { isLoading, data, error } = useFetch(
     `http://localhost:3000/user/${userId}/activity`
   );
-  console.log("activité = ", isLoading ? "loading" : data.data);
 
   return error ? (
+    // In case of fetch error
     <div className="error-fetch">
       <p>Code: ${error.status}</p>
       <p>Message: ${error.statusText}</p>
     </div>
   ) : !isLoading ? (
+    // If the data are loaded
     <div className="activity-graph">
       <h2 className="activity-graph-title">Activité quotidienne</h2>
       <ResponsiveContainer>
@@ -52,7 +64,7 @@ const Activite = ({ userId }) => {
           <XAxis
             className="activity-x"
             dataKey="day"
-            tickFormatter={xAxisTickFormat}
+            tickFormatter={(value) => Number(value.split("-")[2])}
             interval="preserveStartEnd"
             tickSize="0"
             tickMargin="20"
@@ -109,8 +121,13 @@ const Activite = ({ userId }) => {
       </ResponsiveContainer>
     </div>
   ) : (
+    // if fetch is in progresss
     <div className="loading">Loading</div>
   );
+};
+
+Activite.propTypes = {
+  userId: PropTypes.number.isRequired,
 };
 
 export default Activite;
