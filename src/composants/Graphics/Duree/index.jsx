@@ -29,8 +29,8 @@ const DureeToolTip = ({ active, payload }) => {
 };
 
 DureeToolTip.propTypes = {
-  payload: PropTypes.array.isRequired,
-  active: PropTypes.bool.isRequired,
+  payload: PropTypes.array,
+  active: PropTypes.bool,
 };
 
 /**

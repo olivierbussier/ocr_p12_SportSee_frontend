@@ -7,7 +7,7 @@ import "./style.scss";
  * (private component not exported)
  *
  * @param {object} props
- * @param {Array} items
+ * @param {Array} props.items
  * @returns {JSX.Element}
  */
 const Menu = ({ items }) => {
@@ -25,10 +25,10 @@ const Menu = ({ items }) => {
 };
 
 Menu.propTypes = {
-  items: PropTypes.arrayOf({
+  items: PropTypes.arrayOf(PropTypes.shape({
     name: PropTypes.string.isRequired,
     link: PropTypes.string.isRequired
-  })
+  }))
 }
 
 /**
