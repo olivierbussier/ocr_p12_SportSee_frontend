@@ -44,50 +44,44 @@ const xAxisFormatter = (day) => {
  * @param {boolean} active - is Tootip active
  * @returns the value when a dot on the line is pointed
  */
-const CustomToolTypeSessionDuration = ({ payload, active }) => {
-  if (active) {
+const DureeToolTip = ({ active, payload, label }) => {
+  // if (active && payload && payload.length) {
     return (
       <div className="duree-chart-tooltip">
-        <div>{`${payload[0].value}`}min</div>
+        {active ? <div>{`${payload[0].value}`}min</div> : <div>rien</div>}
       </div>
     );
-  }
-  return null;
+  // }
+  // return null;
 };
 
-/**
- * Animate background format when moving the cursor on the chart line
- * @param {event} e - move of the mouse
- * @returns darker background from the pointed dot
- */
-function customMouseMove(e) {
-  let sessionWrap = document.querySelector(".duree-chart-wrap");
+// /**
+//  * Animate background format when moving the cursor on the chart line
+//  * @param {event} e - move of the mouse
+//  * @returns darker background from the pointed dot
+//  */
+// const mouseMove = (e) => {
+//   const wrapper = document.querySelector(".duree-chart-wrap");
+//   const mouseXpercent = Math.floor((e.activeCoordinate.x / wrapper.offsetWidth) * 100);
 
-  if (e.isTooltipActive) {
-    let windowWidth = sessionWrap.offsetWidth;
-    let mouseXpercent = Math.floor((e.activeCoordinate.x / windowWidth) * 100);
+//   if (e.isTooltipActive) {
 
-    sessionWrap.style.background = `linear-gradient(90deg, rgba(255,0,0, 1) ${mouseXpercent}%, rgba(0,0,0,0.1) ${mouseXpercent}%, rgba(0,0,0,0.1) 100%)`;
-  } else {
-    sessionWrap.style.background = "transparent";
-  }
-}
+//     wrapper.style.background = `linear-gradient(90deg, rgba(255,0,0, 1) ${mouseXpercent}%, rgba(0,0,0,0.1) ${mouseXpercent}%, rgba(0,0,0,0.1) 100%)`;
+//   } else {
+//     wrapper.style.background = "transparent";
+//   }
+// }
 
 /**
  * Animate background format when moving the cursor out of a line dot
  * @param {event} e - move of the mouse
  * @returns initial background
  */
-const customOnMouseOut = () => {
-  let sessionWrap = document.querySelector(".duree-chart-wrap");
-  sessionWrap.style.background = "transparent";
-};
-
 const Duree = ({ userId }) => {
+
   const { isLoading, data, error } = useFetch(
     `http://localhost:3000/user/${userId}/average-sessions`
   );
-  console.log("duree = ", isLoading ? "loading" : data.data);
 
   if (error) {
     return (
@@ -112,8 +106,8 @@ const Duree = ({ userId }) => {
                 left: 8,
                 bottom: 40,
               }}
-              onMouseMove={(e) => customMouseMove(e)}
-              onMouseOut={() => customOnMouseOut()}
+              // onMouseMove={(e) => mouseMove(e)}
+              // onMouseOut={() => document.querySelector(".duree-chart-wrap").style.background = "transparent"}
             >
               <CartesianGrid horizontal={false} vertical={false} />
               <XAxis
@@ -128,8 +122,9 @@ const Duree = ({ userId }) => {
               />
               <YAxis hide="true" domain={["dataMin", "dataMax"]} />
               <Tooltip
-                content={<CustomToolTypeSessionDuration />}
+                content={<DureeToolTip />}
                 cursor={false}
+                offset={20}
               />
               <Line
                 dataKey="sessionLength"
