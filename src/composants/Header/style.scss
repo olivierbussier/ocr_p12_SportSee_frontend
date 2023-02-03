@@ -1,0 +1,22 @@
+.header {
+  display: flex;
+  flex-direction: column;
+  padding-top: 0;
+  .primary-red {
+    color: #ff0101;
+  }
+  .header-text {
+    font-size: 48px;
+    font-weight: 500;
+    display: flex;
+    flex-direction: row;
+    gap: 0.25em;
+    .text {
+    }
+  }
+  .comment-day {
+    padding-top: 20px;
+    font-size: 18px;
+    font-weight: 400;
+  }
+}

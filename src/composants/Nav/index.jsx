@@ -48,7 +48,9 @@ const Nav = ({ children }) => {
     <div className="nav-bar">
       <NavTop />
       <NavLeft />
-      {children}
+        <div className="main">
+          {children}
+        </div>
     </div>
   );
 };

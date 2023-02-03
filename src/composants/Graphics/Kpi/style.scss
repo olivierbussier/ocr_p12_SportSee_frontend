@@ -1,0 +1,34 @@
+@import "../../../shared/style.scss";
+
+.kpi-chart-wrap {
+  display: flex;
+  position: relative;
+  height: 100%;
+  background-color: $component-bg-color;
+  border-radius: 5px;
+  .kpi-chart-text {
+    position: absolute;
+    top: 0;
+    padding-left: 2em;
+    font-size: 15px;
+    font-weight: 500;
+    color: black;
+  }
+  .kpi-score {
+    position: absolute;
+    width: 100%;
+    top: 40%;
+    .kpi-score-percent {
+      font-size: 26px;
+      font-weight: 700;
+      margin: 0;
+      text-align: center;
+      color: $primary-grey-anthracite;
+    }
+    .kpi-score-text {
+      text-align: center;
+      color: $primary-grey;
+      margin: 0;
+    }
+  }
+}

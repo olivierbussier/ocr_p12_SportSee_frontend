@@ -1,0 +1,42 @@
+@import "../../../shared/style.scss";
+
+.activity-graph {
+  position: relative;
+  // display: flex;
+  height: 100%;
+  padding: 1em;
+
+  justify-content: center;
+  border-radius: 5px;
+  box-sizing: border-box;
+  .activity-graph-title {
+    position: absolute;
+    top: 0;
+    font-size: 15px;
+    font-weight: 500;
+    color: $primary-grey-anthracite;
+  }
+  .activity-graph-tooltip {
+    background-color: #e60000;
+    color: white;
+    font-weight: 500;
+    font-size: 7px;
+    height: 45px;
+    width: 39px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    padding: 15px 5px;
+  }
+  .activity-x,
+  .activity-y {
+    font-weight: 500;
+    font-size: 14px;
+  }
+  .activity-legend {
+    color: $primary-grey;
+    font-size: 14px;
+    font-weight: 500;
+  }
+}

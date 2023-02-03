@@ -1,0 +1,51 @@
+@import "/src/shared/style.scss";
+
+.dashboard {
+  display: grid;
+  // width: calc(100% - 4em);
+  // height: calc(100% - 2em);
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  grid-template-columns: 26% 26% 26% 22%;
+  grid-template-rows: 16% 42% 42%;
+  // grid-gap: 2em;
+  grid-template-areas:
+    "header header header header"
+    "activite activite activite cplg"
+    "duree radar score cplg";
+  .zone-header {
+    margin: 0 0 0 1em;
+    grid-area: header;
+    border-radius: 5px;
+  }
+  .zone-activite {
+    margin: 1em;
+    grid-area: activite;
+    background-color: $component-bg-color;
+    border-radius: 5px;
+  }
+  .zone-duree {
+    margin: 1em;
+    grid-area: duree;
+    background-color: $component-bg-color;
+    border-radius: 5px;
+  }
+  .zone-radar {
+    margin: 1em;
+    grid-area: radar;
+    background-color: $component-bg-color;
+    border-radius: 5px;
+  }
+  .zone-kpi {
+    margin: 1em;
+    grid-area: score;
+    background-color: $component-bg-color;
+    border-radius: 5px;
+  }
+  .zone-cglp {
+    margin: 1em 0 1em 1em;
+    grid-area: cplg;
+    background-color: white;
+  }
+}

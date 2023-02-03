@@ -1,0 +1,24 @@
+@import "../../../shared/style.scss";
+
+.duree-chart-container {
+  background-color: #ff0000;
+  height: 100%;
+  border-radius: 5px;
+  .duree-chart-wrap {
+    display: flex;
+    position: relative;
+    height: 100%;
+    // background-color: $primary-red;
+    border-radius: 5px;
+    .duree-chart-title {
+      position: absolute;
+      opacity: 0.5;
+      width: 150px;
+      top: 0;
+      padding-left: 2em;
+      font-size: 15px;
+      font-weight: 500;
+      color: white;
+    }
+  }
+}
