@@ -17,35 +17,36 @@
   .zone-header {
     margin: 0 0 0 1em;
     grid-area: header;
-    border-radius: 5px;
+    border-radius: $border-radius;
   }
   .zone-activite {
     margin: 1em;
     grid-area: activite;
-    background-color: $component-bg-color;
-    border-radius: 5px;
+    background-color: $primary-grey-light;
+    border-radius: $border-radius;
   }
   .zone-duree {
     margin: 1em;
     grid-area: duree;
-    background-color: $component-bg-color;
-    border-radius: 5px;
+    background-color: $primary-grey-light;
+    border-radius: $border-radius;
   }
   .zone-radar {
     margin: 1em;
     grid-area: radar;
-    background-color: $component-bg-color;
-    border-radius: 5px;
+    background-color: $primary-grey-light;
+    border-radius: $border-radius;
   }
   .zone-kpi {
     margin: 1em;
     grid-area: score;
-    background-color: $component-bg-color;
-    border-radius: 5px;
+    background-color: $primary-grey-light;
+    border-radius: $border-radius;
   }
   .zone-cglp {
     margin: 1em 0 1em 1em;
     grid-area: cplg;
+    border-radius: $border-radius;
     background-color: white;
   }
 }

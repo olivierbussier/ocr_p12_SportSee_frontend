@@ -5,12 +5,13 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  border-radius: 5px;
+  border-radius: $border-radius;
   box-sizing: border-box;
   .indicateur {
     display: flex;
     align-items: center;
-    background-color: $component-bg-color;
+    background-color: $primary-grey-light;
+    border-radius: $border-radius;
     img {
       padding: 32px;
     }

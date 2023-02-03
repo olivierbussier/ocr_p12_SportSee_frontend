@@ -3,13 +3,13 @@
 .duree-chart-container {
   background-color: #ff0000;
   height: 100%;
-  border-radius: 5px;
+  border-radius: $border-radius;
   .duree-chart-wrap {
     display: flex;
     position: relative;
     height: 100%;
     // background-color: $primary-red;
-    border-radius: 5px;
+    border-radius: $border-radius;
     .duree-chart-title {
       position: absolute;
       opacity: 0.5;
@@ -20,5 +20,17 @@
       font-weight: 500;
       color: white;
     }
+  }
+  .recharts-tooltip-wrapper  {
+    &:focus {
+      outline: none;
+    }
+  }
+  .duree-chart-tooltip {
+    border: none;
+    background-color: #fff;
+    padding: 10px;
+    font-size: 8px;
+    font-weight: 500;
   }
 }

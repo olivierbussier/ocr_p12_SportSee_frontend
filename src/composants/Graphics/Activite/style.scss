@@ -7,7 +7,7 @@
   padding: 1em;
 
   justify-content: center;
-  border-radius: 5px;
+  border-radius: $border-radius;
   box-sizing: border-box;
   .activity-graph-title {
     position: absolute;
@@ -21,13 +21,14 @@
     color: white;
     font-weight: 500;
     font-size: 7px;
-    height: 45px;
+    line-height: 24px;
+    // height: 45px;
     width: 39px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-direction: column;
-    padding: 15px 5px;
+    padding: 7px;
   }
   .activity-x,
   .activity-y {
@@ -35,7 +36,7 @@
     font-size: 14px;
   }
   .activity-legend {
-    color: $primary-grey;
+    color: $primary-grey-medium;
     font-size: 14px;
     font-weight: 500;
   }
