@@ -15,8 +15,9 @@ import "./style.scss";
 /**
  * This component is dedicated to handle the tooltip of the activity graph
  *
- * @param {Array} payload Array containing elements to display in tooltip
- * @param {Boolean} active true if tooltip currently displayed, false otherwise
+ * @param {object} props
+ * @param {Array} props.payload Array containing elements to display in tooltip
+ * @param {Boolean} props.active true if tooltip currently displayed, false otherwise
  * @returns {JSX.Element?}
  */
 const CustomTooltip = ({ payload, active }) => {
@@ -33,7 +34,8 @@ const CustomTooltip = ({ payload, active }) => {
  * This component realise the data acquisition using fetch on /user/:id/activity
  * and is able to manage errors & loading in progress
  *
- * @param {Number} userId Reference id of the user to display
+ * @param {object} props
+ * @param {Number} props.userId Reference id of the user to display
  * @returns {JSX.Element?}
  */
 const Activite = ({ userId }) => {

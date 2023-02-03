@@ -15,9 +15,10 @@ import "./style.scss";
 /**
  * Format Tooltip (private component)
  *
- * @param {array} payload - source data
- * @param {boolean} active - is Tootip active
- * @returns the value when a dot on the line is pointed
+ * @param {object} props
+ * @param {array} props.payload - source data
+ * @param {boolean} props.active - is Tootip active
+ * @returns {JSX.Element?}the value when a dot on the line is pointed
  */
 const DureeToolTip = ({ active, payload }) => {
   return active && payload && payload.length ? (
@@ -31,7 +32,8 @@ const DureeToolTip = ({ active, payload }) => {
  * This component display a Line graph with average session duration of the
  * selected user
  *
- * @param {Number} userId - selected user
+ * @param {object} props
+ * @param {Number} props.userId - selected user
  * @returns initial background
  */
 const Duree = ({ userId }) => {

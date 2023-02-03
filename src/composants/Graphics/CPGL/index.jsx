@@ -6,10 +6,11 @@ import "./style.scss";
  * This component is used to display a key value of types
  * carbohydrates, calories, lipid, protein with an icon, a value and a unit
  *
- * @param {String} icon The icon to display in front of the value
- * @param {Number} value The value to display
- * @param {String} unit The unit to display after the value
- * @param {String} textUnit The unit to display below the value
+ * @param {object} props
+ * @param {String} props.icon The icon to display in front of the value
+ * @param {Number} props.value The value to display
+ * @param {String} props.unit The unit to display after the value
+ * @param {String} props.textUnit The unit to display below the value
  * @returns {JSX.Element}
  */
 const Indic = ({ icon, value, unit, textUnit }) => {
@@ -37,7 +38,8 @@ Indic.propTypes = {
 /**
  * This component is the container or the 4 Indic components
  *
- * @param {object} data An object containing calories, protein, carbohydrat and lipid values
+ * @param {object} props
+ * @param {object} props.data An object containing calories, protein, carbohydrat and lipid values
  * @returns {JSX.Element}
  */
 const CalProGluLip = ({ data }) => {

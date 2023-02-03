@@ -12,7 +12,8 @@ import "./style.scss";
  * React component used to display today score using radial bar chart
  * parameter value is number from 0 to 1
  *
- * @param {number} value Value of the KPI to display
+ * @param {object} props
+ * @param {number} props.value Value of the KPI to display
  * @returns
  */
 const Kpi = ({ value }) => {
