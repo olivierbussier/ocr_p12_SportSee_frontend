@@ -5,6 +5,7 @@ import "./style.scss";
 /**
  * This component is used to display a key value of types
  * carbohydrates, calories, lipid, protein with an icon, a value and a unit
+ * (internal component not exported)
  *
  * @param {object} props
  * @param {String} props.icon The icon to display in front of the value
@@ -36,7 +37,7 @@ Indic.propTypes = {
 };
 
 /**
- * This component is the container or the 4 Indic components
+ * This component is the container/wrapper for the 4 Indic components
  *
  * @param {object} props
  * @param {object} props.data An object containing calories, protein, carbohydrat and lipid values

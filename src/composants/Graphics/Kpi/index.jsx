@@ -13,8 +13,8 @@ import "./style.scss";
  * parameter value is number from 0 to 1
  *
  * @param {object} props
- * @param {number} props.value Value of the KPI to display
- * @returns
+ * @param {number} props.value Value (between 1 and 1) of the KPI to display
+ * @returns {JSX.Element}
  */
 const Kpi = ({ value }) => {
   return (

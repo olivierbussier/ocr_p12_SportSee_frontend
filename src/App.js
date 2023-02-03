@@ -1,4 +1,4 @@
-import Main from "./pages/Main";
+import DashBoard from "./pages/DashBoard";
 import Nav from "./composants/Nav";
 import Container from "./composants/Container";
 
@@ -8,7 +8,7 @@ function App() {
   return (
     <Container>
       <Nav>
-        <Main />
+        <DashBoard />
       </Nav>
     </Container>
   );

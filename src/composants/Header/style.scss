@@ -12,8 +12,8 @@
     display: flex;
     flex-direction: row;
     gap: 0.25em;
-    .text {
-    }
+    // .text {
+    // }
   }
   .comment-day {
     padding-top: 20px;
@@ -23,6 +23,6 @@
 }
 
 .fixed-right {
-    position: absolute!important;
-    right: 0;
+  position: absolute !important;
+  right: 0;
 }

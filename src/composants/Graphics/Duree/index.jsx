@@ -13,19 +13,24 @@ import PropTypes from "prop-types";
 import "./style.scss";
 
 /**
- * Format Tooltip (private component)
+ * Format Tooltip (private component not exported)
  *
  * @param {object} props
  * @param {array} props.payload - source data
- * @param {boolean} props.active - is Tootip active
- * @returns {JSX.Element?}the value when a dot on the line is pointed
+ * @param {boolean} props.active - is Tootip active ?
+ * @returns {JSX.Element?}
  */
 const DureeToolTip = ({ active, payload }) => {
   return active && payload && payload.length ? (
     <div className="duree-chart-tooltip">
-      <div>{`${payload[0].value}`}min</div> : <div>rien</div>
+      <div>{`${payload[0].value}`}min</div>
     </div>
   ) : null;
+};
+
+DureeToolTip.propTypes = {
+  payload: PropTypes.array.isRequired,
+  active: PropTypes.bool.isRequired,
 };
 
 /**

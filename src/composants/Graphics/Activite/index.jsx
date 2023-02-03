@@ -14,6 +14,7 @@ import "./style.scss";
 
 /**
  * This component is dedicated to handle the tooltip of the activity graph
+ * (Internal component not exported)
  *
  * @param {object} props
  * @param {Array} props.payload Array containing elements to display in tooltip
