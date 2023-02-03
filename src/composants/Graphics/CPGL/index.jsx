@@ -1,5 +1,17 @@
+import PropTypes from "prop-types";
+
 import "./style.scss";
 
+/**
+ * This component is used to display a key value of types
+ * carbohydrates, calories, lipid, protein with an icon, a value and a unit
+ *
+ * @param {String} icon The icon to display in front of the value
+ * @param {Number} value The value to display
+ * @param {String} unit The unit to display after the value
+ * @param {String} textUnit The unit to display below the value
+ * @returns {JSX.Element}
+ */
 const Indic = ({ icon, value, unit, textUnit }) => {
   return (
     <div className="indicateur">
@@ -15,6 +27,19 @@ const Indic = ({ icon, value, unit, textUnit }) => {
   );
 };
 
+Indic.propTypes = {
+  icon: PropTypes.string.isRequired,
+  value: PropTypes.number.isRequired,
+  unit: PropTypes.string.isRequired,
+  textUnit: PropTypes.string.isRequired,
+};
+
+/**
+ * This component is the container or the 4 Indic components
+ *
+ * @param {object} data An object containing calories, protein, carbohydrat and lipid values
+ * @returns {JSX.Element}
+ */
 const CalProGluLip = ({ data }) => {
   return (
     <div className="cpgl-wrapper">
@@ -44,6 +69,15 @@ const CalProGluLip = ({ data }) => {
       />
     </div>
   );
+};
+
+CalProGluLip.propTypes = {
+  data: PropTypes.shape({
+    calorieCount: PropTypes.number.isRequired,
+    proteinCount: PropTypes.number.isRequired,
+    carbohydrateCount: PropTypes.number.isRequired,
+    lipidCount: PropTypes.number.isRequired,
+  }),
 };
 
 export default CalProGluLip;
