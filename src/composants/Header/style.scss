@@ -1,5 +1,6 @@
 .header {
   display: flex;
+  position: relative;
   flex-direction: column;
   padding-top: 0;
   .primary-red {
@@ -19,4 +20,9 @@
     font-size: 18px;
     font-weight: 400;
   }
+}
+
+.fixed-right {
+    position: absolute!important;
+    right: 0;
 }

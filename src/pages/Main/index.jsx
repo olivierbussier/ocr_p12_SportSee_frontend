@@ -11,8 +11,12 @@ import Kpi from "../../composants/Graphics/Kpi";
 // import { useFetch } from "../../shared/hook";
 
 import "./style.scss";
+import { useState } from "react";
 
-const Main = ({ userId = 12 }) => {
+const Main = () => {
+
+  const [userId, setUserId] = useState(12)
+
   const { isLoading, data, error } = useFetch(
     "http://localhost:3000/user/" + userId
   );
@@ -27,12 +31,17 @@ const Main = ({ userId = 12 }) => {
     );
   }
 
+  const onUserChange = (x) => {
+    setUserId(x.value)
+    console.log(x)
+  }
+
   if (!isLoading) {
     const userData = data.data;
     return (
       <DashBoard>
         <div className="zone-header">
-          <Header data={userData} />
+          <Header data={userData} parentChange={onUserChange} />
         </div>
         <div className="zone-activite">
           <Activite userId={userId} />
@@ -44,7 +53,7 @@ const Main = ({ userId = 12 }) => {
           <RadarPerf userId={userId} />
         </div>
         <div className="zone-kpi">
-          <Kpi value={data.data} />
+          <Kpi value={userData.todayScore ? userData.todayScore : userData.score} />
         </div>
         <div className="zone-cglp">
           <CalProGluLip data={userData.keyData} />
