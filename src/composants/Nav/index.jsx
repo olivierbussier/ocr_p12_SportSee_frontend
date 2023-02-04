@@ -7,8 +7,8 @@ import "./style.scss";
  * (private component not exported)
  *
  * @param {object} props
- * @param {Array} props.items
- * @returns {JSX.Element}
+ * @param {Array} props.items Menu items to display (array of objects with link & name properties)
+ * @returns {JSX.Element} DOM of the menu
  */
 const Menu = ({ items }) => {
   return (
@@ -35,7 +35,7 @@ Menu.propTypes = {
  * This component is used to display top menu on the application
  * (private component not exported)
  *
- * @returns {JSX.Element}
+ * @returns {JSX.Element} DOM of the top nav bar
  */
 const NavTop = () => {
   return (
@@ -54,10 +54,20 @@ const NavTop = () => {
 };
 
 /**
+ * This component is used to display copyright information on the left menu
+ * (private component not exported)
+ *
+ * @returns {JSX.Element} DOM of the copyright inormation
+ */
+const Copyright = () => {
+  return <div className="copyright">Copiryght, SportSee 2020</div>;
+};
+
+/**
  * This component is used to display left menu on the application
  * (private component not exported)
  *
- * @returns {JSX.Element}
+ * @returns {JSX.Element} DOM of the Left nav bar
  */
 const NavLeft = () => {
   return (
@@ -72,22 +82,12 @@ const NavLeft = () => {
 };
 
 /**
- * This component is used to display copyright information on the left menu
- * (private component not exported)
- *
- * @returns {JSX.Element}
- */
-const Copyright = () => {
-  return <div className="copyright">Copiryght, SportSee 2020</div>;
-};
-
-/**
  * This component is used to display navigation bars (top & left on the application
  * (private component not exported)
  *
  * @param {object} props
  * @param {JSX.Element} props.children
- * @returns {JSX.Element}
+ * @returns {JSX.Element} DOM of App Navigation (top & left)
  */
 const Nav = ({ children }) => {
   return (

@@ -1,4 +1,4 @@
-import Select from "react-select";
+import ReactSelect from "../ReactSelect";
 
 import PropTypes from "prop-types";
 
@@ -9,11 +9,11 @@ import "./style.scss";
  * It displays Greetings, firstname and comment for the user
  *
  * @param {object} props
- * @param {String} props.firstName
- * @param {CallableFunction} props.parentChange
- * @returns {JSX.Element}
+ * @param {String} props.firstName Firstnameof the user displayed
+ * @param {CallableFunction} props.parentChange Function to call when select box value change
+ * @returns {JSX.Element} DOM of the Header zone of the dashboard
  */
-const Header = ({ firstName, parentChange }) => {
+const Header = ({ firstName, currentUser, parentChange }) => {
   const options = [
     { value: 12, label: "Karl" },
     { value: 18, label: "Cecilia" },
@@ -28,8 +28,9 @@ const Header = ({ firstName, parentChange }) => {
       <div className="comment-day">
         Félicitation ! Vous avez explosé vos objectifs hier 👏
       </div>
-      <Select
+      <ReactSelect
         className="fixed-right"
+        currentValue={currentUser}
         onChange={parentChange}
         options={options}
       />

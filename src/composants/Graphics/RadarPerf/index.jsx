@@ -29,8 +29,8 @@ const reverseData = (parray) => {
  * displayed items are Cardio, Energie, Endurance, Force, Vitesse and Intensité
  *
  * @param {object} props
- * @param {Number} props.userId
- * @returns {JSX.Element}
+ * @param {Number} props.userId User ref to be fetched & displayed
+ * @returns {JSX.Element} DOM of the Radar graph
  */
 const RadarPerf = ({ userId }) => {
   // Load data
@@ -85,7 +85,7 @@ const RadarPerf = ({ userId }) => {
 };
 
 RadarPerf.propTypes = {
-  userId: PropTypes.number.isRequired,
+  userId: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
 };
 
 export default RadarPerf;

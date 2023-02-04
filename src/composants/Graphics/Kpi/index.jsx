@@ -14,7 +14,7 @@ import "./style.scss";
  *
  * @param {object} props
  * @param {number} props.value Value (between 1 and 1) of the KPI to display
- * @returns {JSX.Element}
+ * @returns {JSX.Element} DOM of the KPI graph
  */
 const Kpi = ({ value }) => {
   return (

@@ -38,10 +38,11 @@ DureeToolTip.propTypes = {
  * selected user
  *
  * @param {object} props
- * @param {Number} props.userId - selected user
- * @returns initial background
+ * @param {Number} props.userId - User reference to fetch & display
+ * @returns {JSX.Element} DOM corresponding to the average duration graph
  */
 const Duree = ({ userId }) => {
+
   const { isLoading, data, error } = useFetch(
     `http://localhost:3000/user/${userId}/average-sessions`
   );
@@ -97,7 +98,7 @@ const Duree = ({ userId }) => {
 };
 
 Duree.propTypes = {
-  userId: PropTypes.number.isRequired,
+  userId: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
 };
 
 export default Duree;

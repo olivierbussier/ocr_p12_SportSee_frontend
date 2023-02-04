@@ -28,7 +28,7 @@ Column.propTypes = {
  *
  * @param {object} props
  * @param {JSX.Element} props.children
- * @returns {JSX.Element}
+ * @returns {JSX.Element} DOM of the dashboard wrapper
  */
 export const DashBoardWrapper = ({ children }) => {
   return <div className="dashboard-wrapper">{children}</div>;

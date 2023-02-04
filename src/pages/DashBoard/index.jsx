@@ -14,7 +14,7 @@ import { useState } from "react";
 /**
  * This component is used to display the DashBoard with all the widgets
  *
- * @returns {JSX.Element}
+ * @returns {JSX.Element} DOM of the dashboard
  */
 const DashBoard = () => {
   const [userId, setUserId] = useState(12); // Default to user number 12
@@ -23,48 +23,41 @@ const DashBoard = () => {
     "http://localhost:3000/user/" + userId
   );
 
-  if (error) {
-    return (
-      <div>
-        <p>Code: ${error.status}</p>
-        <p>Message: ${error.statusText}</p>
+  return error ? (
+    <div>
+      <p>Code: ${error.status}</p>
+      <p>Message: ${error.statusText}</p>
+    </div>
+  ) : !isLoading ? (
+    <DashBoardWrapper>
+      <div className="zone-header">
+        <Header
+          firstName={data.data.userInfos.firstName}
+          currentUser={userId}
+          parentChange={(user) => setUserId(user)}
+        />
       </div>
-    );
-  }
-
-  if (!isLoading) {
-    const userData = data.data;
-    return (
-      <DashBoardWrapper>
-        <div className="zone-header">
-          <Header
-            firstName={userData.userInfos.firstName}
-            currentUser={userId}
-            parentChange={(user) => setUserId(user.value)}
-          />
-        </div>
-        <div className="zone-activite">
-          <Activite userId={userId} />
-        </div>
-        <div className="zone-duree">
-          <Duree userId={userId} />
-        </div>
-        <div className="zone-radar">
-          <RadarPerf userId={userId} />
-        </div>
-        <div className="zone-kpi">
-          <Kpi
-            value={userData.todayScore ? userData.todayScore : userData.score}
-          />
-        </div>
-        <div className="zone-cglp">
-          <CalProGluLip data={userData.keyData} />
-        </div>
-      </DashBoardWrapper>
-    );
-  } else {
-    return <div className="loading">loading</div>;
-  }
+      <div className="zone-activite">
+        <Activite userId={userId} />
+      </div>
+      <div className="zone-duree">
+        <Duree userId={userId} />
+      </div>
+      <div className="zone-radar">
+        <RadarPerf userId={userId} />
+      </div>
+      <div className="zone-kpi">
+        <Kpi
+          value={data.data.todayScore ? data.data.todayScore : data.data.score}
+        />
+      </div>
+      <div className="zone-cglp">
+        <CalProGluLip data={data.data.keyData} />
+      </div>
+    </DashBoardWrapper>
+  ) : (
+    <div className="loading">loading</div>
+  );
 };
 
 export default DashBoard;

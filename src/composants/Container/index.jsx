@@ -9,7 +9,7 @@ import "./style.scss";
  *
  * @param {object} props
  * @param {JSX.Element} props.children
- * @returns {JSX.Element}
+ * @returns {JSX.Element} DOM of the root container
  */
 const Container = ({ children }) => {
   return <div className="container">{children}</div>;

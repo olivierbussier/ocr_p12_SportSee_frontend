@@ -12,7 +12,7 @@ import "./style.scss";
  * @param {Number} props.value The value to display
  * @param {String} props.unit The unit to display after the value
  * @param {String} props.textUnit The unit to display below the value
- * @returns {JSX.Element}
+ * @returns {JSX.Element} DOM of the Indic
  */
 const Indic = ({ icon, value, unit, textUnit }) => {
   return (

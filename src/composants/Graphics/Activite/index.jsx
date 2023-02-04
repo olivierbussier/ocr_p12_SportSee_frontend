@@ -36,8 +36,8 @@ const CustomTooltip = ({ payload, active }) => {
  * and is able to manage errors & loading in progress
  *
  * @param {object} props
- * @param {Number} props.userId Reference id of the user to display
- * @returns {JSX.Element?}
+ * @param {Number} props.userId Reference id of the user to fetch & display
+ * @returns {JSX.Element} DOM of the activity week graph | error | loading
  */
 const Activite = ({ userId }) => {
   // data loading
@@ -130,7 +130,7 @@ const Activite = ({ userId }) => {
 };
 
 Activite.propTypes = {
-  userId: PropTypes.number.isRequired,
+  userId: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
 };
 
 export default Activite;
