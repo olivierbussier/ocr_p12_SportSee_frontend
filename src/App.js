@@ -6,7 +6,7 @@ import {
   fetchAverageData,
   fetchPerformanceData,
   fetchUserData,
-} from "./shared/fetchData";
+} from "./services/fetchData";
 
 import Container from "./composants/Container";
 import Main from "./composants/Main";
@@ -14,6 +14,7 @@ import DashBoard from "./pages/DashBoard";
 import Error from "./pages/Error";
 
 import "./App.css";
+import { normalizeDataActivity, normalizeDataDuree, normalizeDataPerformance, normalizeDataUser } from "./services/normalizeData";
 
 function App() {
   const [userId, setUserId] = useState(12);
@@ -29,25 +30,23 @@ function App() {
 
   useEffect(() => {
     fetchUserData(userId)
-      .then((data) => setUserData(data))
+      .then((data) => setUserData(normalizeDataUser(data)))
       .catch((error) => setError(error));
     fetchActivityData(userId)
-      .then((data) => setActivityData(data))
+      .then((data) => setActivityData(normalizeDataActivity(data)))
       .catch((error) => setError(error));
     fetchAverageData(userId)
-      .then((data) => setAverageData(data))
+      .then((data) => setAverageData(normalizeDataDuree(data)))
       .catch((error) => setError(error));
     fetchPerformanceData(userId)
-      .then((data) => setPerformanceData(data))
+      .then((data) => setPerformanceData(normalizeDataPerformance(data)))
       .catch((error) => setError(error));
     // console.log("useEffect in <App />, userId=", userId);
   }, [userId]);
 
   return (
     <Container>
-      <Main onUserChange={
-        (id) => setUserId(id)
-        } currentUser={userId}>
+      <Main onUserChange={(id) => setUserId(id)} currentUser={userId}>
         <Routes>
           <Route
             path="/"
