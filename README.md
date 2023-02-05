@@ -1,12 +1,18 @@
 # Getting Started with SportSee frontend app
 
 ## Prerequisites
-SportSee application needs two components running to work:
+In order to run this application you have to install:
+- [nodeJS](https://nodejs.org/en/)
+- a packet managet like [yarn](https://yarnpkg.com/getting-started/install)
+
+After that SportSee application needs two components running to work:
 - backend (nodeJS application)
 - frontend
 
 ## Back-end
 the backend repository could be find on github : https://github.com/olivierbussier/p12_SportSee_BackEnd. Clone it & install node dépendencies with the command `yarn` as usual. Then start the backend using command `yarn dev`. Application will start and listen to port 3000.
+
+It is also possible to run the backend using docker, see the github documentation for detailled explanations.
 
 ## Front-end
 
