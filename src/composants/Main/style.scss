@@ -1,0 +1,23 @@
+@import "../../shared/style.scss";
+
+.app-grid {
+    position: relative;
+    display: grid;
+    grid-template-columns: 115px 1fr;
+    grid-template-rows: 90px max-content;
+    grid-template-areas:
+      "hd hd "
+      "sd main"
+      "sd main";
+  .logo {
+    width: 178px;
+    margin-left: 28px;
+    margin-top: 0;
+  }
+}
+
+.fixed-right {
+  position: absolute !important;
+  right: 0.3em;
+  top: 0.3em;
+}

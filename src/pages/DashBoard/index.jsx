@@ -1,4 +1,3 @@
-import useFetch from "react-fetch-hook";
 import Header from "../../composants/Header";
 
 import { DashBoardWrapper } from "../../composants/DashboardWrapper";
@@ -9,54 +8,45 @@ import RadarPerf from "../../composants/Graphics/RadarPerf";
 import Kpi from "../../composants/Graphics/Kpi";
 
 import "./style.scss";
-import { useState } from "react";
+import Spinner from "../../composants/Spinner";
+
 
 /**
  * This component is used to display the DashBoard with all the widgets
  *
  * @returns {JSX.Element} DOM of the dashboard
  */
-const DashBoard = () => {
-  const [userId, setUserId] = useState(12); // Default to user number 12
+const DashBoard = ({user, activity, average, performance, setUserId}) => {
 
-  const { isLoading, data, error } = useFetch(
-    "http://localhost:3000/user/" + userId
-  );
-
-  return error ? (
-    <div>
-      <p>Code: ${error.status}</p>
-      <p>Message: ${error.statusText}</p>
-    </div>
-  ) : !isLoading ? (
+  return (user && activity && average && performance) ? (
     <DashBoardWrapper>
-      <div className="zone-header">
+      <section className="zone-header">
         <Header
-          firstName={data.data.userInfos.firstName}
-          currentUser={userId}
+          firstName={user.userInfos.firstName}
+          currentUser={user.id}
           parentChange={(user) => setUserId(user)}
         />
-      </div>
-      <div className="zone-activite">
-        <Activite userId={userId} />
-      </div>
-      <div className="zone-duree">
-        <Duree userId={userId} />
-      </div>
-      <div className="zone-radar">
-        <RadarPerf userId={userId} />
-      </div>
-      <div className="zone-kpi">
+      </section>
+      <section className="zone-activite">
+        <Activite activity={activity} />
+      </section>
+      <section className="zone-duree">
+        <Duree average={average} />
+      </section>
+      <section className="zone-radar">
+        <RadarPerf performance={performance} />
+      </section>
+      <section className="zone-kpi">
         <Kpi
-          value={data.data.todayScore ? data.data.todayScore : data.data.score}
+          value={user.todayScore ? user.todayScore : user.score}
         />
-      </div>
-      <div className="zone-cglp">
-        <CalProGluLip data={data.data.keyData} />
-      </div>
+      </section>
+      <section className="zone-cglp">
+        <CalProGluLip data={user.keyData} />
+      </section>
     </DashBoardWrapper>
   ) : (
-    <div className="loading">loading</div>
+    <Spinner />
   );
 };
 

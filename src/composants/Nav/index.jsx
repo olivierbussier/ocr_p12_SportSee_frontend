@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
 import "./style.scss";
 
@@ -16,7 +17,7 @@ const Menu = ({ items }) => {
       {items.map((e, index) => {
         return (
           <li key={"menu-" + index}>
-            <a href={e.link}>{e.name}</a>
+            <Link to={e.link}>{e.name}</Link>
           </li>
         );
       })}
@@ -25,11 +26,13 @@ const Menu = ({ items }) => {
 };
 
 Menu.propTypes = {
-  items: PropTypes.arrayOf(PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    link: PropTypes.string.isRequired
-  }))
-}
+  items: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      link: PropTypes.string.isRequired,
+    })
+  ),
+};
 
 /**
  * This component is used to display top menu on the application
@@ -37,9 +40,9 @@ Menu.propTypes = {
  *
  * @returns {JSX.Element} DOM of the top nav bar
  */
-const NavTop = () => {
+export const NavTop = () => {
   return (
-    <div className="nav-top">
+    <nav className="nav-top">
       <img className="logo" src="../logo.svg" alt="logo" />
       <Menu
         items={[
@@ -49,7 +52,7 @@ const NavTop = () => {
           { name: "Communauté", link: "/social" },
         ]}
       />
-    </div>
+    </nav>
   );
 };
 
@@ -69,38 +72,22 @@ const Copyright = () => {
  *
  * @returns {JSX.Element} DOM of the Left nav bar
  */
-const NavLeft = () => {
+export const NavLeft = () => {
   return (
-    <div className="nav-left">
-      <img className="picto-link" src="../gym.svg" alt="gym" />
-      <img className="picto-link" src="../swim.svg" alt="gym" />
-      <img className="picto-link" src="../bike.svg" alt="gym" />
-      <img className="picto-link" src="../poids.svg" alt="gym" />
+    <nav className="nav-left">
+      <Link to="/relax">
+        <img className="picto-link" src="../gym.svg" alt="gym" />
+      </Link>
+      <Link to="/natation">
+        <img className="picto-link" src="../swim.svg" alt="gym" />
+      </Link>
+      <Link to="/velo">
+        <img className="picto-link" src="../bike.svg" alt="gym" />
+      </Link>
+      <Link to="/muscu">
+        <img className="picto-link" src="../poids.svg" alt="gym" />
+      </Link>
       <Copyright />
-    </div>
+    </nav>
   );
 };
-
-/**
- * This component is used to display navigation bars (top & left on the application
- * (private component not exported)
- *
- * @param {object} props
- * @param {JSX.Element} props.children
- * @returns {JSX.Element} DOM of App Navigation (top & left)
- */
-const Nav = ({ children }) => {
-  return (
-    <div className="nav-bar">
-      <NavTop />
-      <NavLeft />
-      <div className="main">{children}</div>
-    </div>
-  );
-};
-
-Nav.propTypes = {
-  children: PropTypes.object.isRequired
-}
-
-export default Nav;

@@ -1,58 +1,43 @@
 @import "../../shared/style.scss";
 
-.nav-bar {
-    position: relative;
-    display: grid;
-    grid-template-columns: 115px 1fr;
-    grid-template-rows: 90px max-content;
-    grid-template-areas:
-      "hd hd "
-      "sd main"
-      "sd main";
-  .logo {
-    width: 178px;
-    margin-left: 28px;
-    margin-top: 0;
-  }
-  .nav-top {
-    grid-area: hd;
-    background-color: #000;
+.nav-top {
+  grid-area: hd;
+  background-color: #000;
+  display: flex;
+  .menu {
+    justify-content: space-around;
     display: flex;
-    .menu {
-        justify-content: space-around;
-        display: flex;
-        width: 100%;
-        font-size: 24px;
-        font-weight: 500;
-    }
-    a {
-        text-decoration: none;
-        color: white;
-    }
+    width: 100%;
+    font-size: 24px;
+    font-weight: 500;
   }
-  .nav-left {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 15px;
-    flex-direction: column;
-    grid-area: sd;
-    background-color: #000;
-    .picto-link {
-        width: 64px;
-        height: 64px;
-        background-color: #fff;
-        border-radius: $border-radius;
-    }
-    .copyright {
-        position: absolute;
-        transform: rotate(-90deg);
-        color: white;
-        bottom: 100px;
-        font-size: 12px;
-        font-weight: 500;
-        width: 150px;
-    }
+  a {
+    text-decoration: none;
+    color: white;
+  }
+}
+.nav-left {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  flex-direction: column;
+  grid-area: sd;
+  background-color: #000;
+  .picto-link {
+    width: 64px;
+    height: 64px;
+    background-color: #fff;
+    border-radius: $border-radius;
+  }
+  .copyright {
+    position: absolute;
+    transform: rotate(-90deg);
+    color: white;
+    bottom: 100px;
+    font-size: 12px;
+    font-weight: 500;
+    width: 150px;
   }
 }

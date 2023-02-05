@@ -1,5 +1,3 @@
-import ReactSelect from "../ReactSelect";
-
 import PropTypes from "prop-types";
 
 import "./style.scss";
@@ -14,27 +12,17 @@ import "./style.scss";
  * @returns {JSX.Element} DOM of the Header zone of the dashboard
  */
 const Header = ({ firstName, currentUser, parentChange }) => {
-  const options = [
-    { value: 12, label: "Karl" },
-    { value: 18, label: "Cecilia" },
-  ];
 
   return (
-    <div className="header">
+    <header className="header">
       <div className="header-text">
         <div>Bonjour</div>
-        <div className="primary-red">{firstName}</div>
+        <div className="primary-red" data-testid="firstname-id">{firstName}</div>
       </div>
       <div className="comment-day">
         Félicitation ! Vous avez explosé vos objectifs hier 👏
       </div>
-      <ReactSelect
-        className="fixed-right"
-        currentValue={currentUser}
-        onChange={parentChange}
-        options={options}
-      />
-    </div>
+    </header>
   );
 };
 

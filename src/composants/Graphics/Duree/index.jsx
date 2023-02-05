@@ -41,24 +41,15 @@ DureeToolTip.propTypes = {
  * @param {Number} props.userId - User reference to fetch & display
  * @returns {JSX.Element} DOM corresponding to the average duration graph
  */
-const Duree = ({ userId }) => {
+const Duree = ({ average }) => {
 
-  const { isLoading, data, error } = useFetch(
-    `http://localhost:3000/user/${userId}/average-sessions`
-  );
-
-  return error ? (
-    <div className="error-fetch">
-      <p>Code: ${error.status}</p>
-      <p>Message: ${error.statusText}</p>
-    </div>
-  ) : !isLoading ? (
+  return (
     <div className="duree-chart-container">
       <div className="duree-chart-wrap">
         <h2 className="duree-chart-title">Durée moyenne des sessions</h2>
         <ResponsiveContainer width="100%" height="100%">
           <LineChart
-            data={data.data.sessions}
+            data={average.sessions}
             margin={{
               top: 80,
               right: 8,
@@ -92,13 +83,11 @@ const Duree = ({ userId }) => {
         </ResponsiveContainer>
       </div>
     </div>
-  ) : (
-    <div>Loading</div>
   );
 };
 
 Duree.propTypes = {
-  userId: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
+  average: PropTypes.object.isRequired,
 };
 
 export default Duree;

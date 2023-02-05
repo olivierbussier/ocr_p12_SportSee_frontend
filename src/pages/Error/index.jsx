@@ -16,7 +16,7 @@ const Error = ({ code = 404, text = null }) => {
     <div className="page-error">
       <div className="error-code">{code}</div>
       <div className="error-detail">
-        {text ?? "Oups! La page que vous demandez n'existe pas (encore)."}
+        {text ?? "Oups! La page que vous demandez n'existe pas."}
       </div>
       <Link to="/" className="error-action">
         Retourner sur la page d’accueil

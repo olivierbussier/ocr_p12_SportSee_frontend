@@ -32,22 +32,13 @@ const reverseData = (parray) => {
  * @param {Number} props.userId User ref to be fetched & displayed
  * @returns {JSX.Element} DOM of the Radar graph
  */
-const RadarPerf = ({ userId }) => {
-  // Load data
-  const { isLoading, data, error } = useFetch(
-    `http://localhost:3000/user/${userId}/performance`
-  );
+const RadarPerf = ({ performance }) => {
 
-  return error ? (
-    <div>
-      <p>Code: ${error.status}</p>
-      <p>Message: ${error.statusText}</p>
-    </div>
-  ) : !isLoading ? (
+  return (
     <div className="radar-chart-wrap">
       <ResponsiveContainer width="100%" height="100%">
         <RadarChart
-          data={reverseData(data.data.data)}
+          data={reverseData(performance.data)}
           outerRadius={80}
           margin={{
             top: -8,
@@ -79,13 +70,11 @@ const RadarPerf = ({ userId }) => {
         </RadarChart>
       </ResponsiveContainer>
     </div>
-  ) : (
-    <div>Loading</div>
   );
 };
 
 RadarPerf.propTypes = {
-  userId: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
+  performance: PropTypes.object.isRequired,
 };
 
 export default RadarPerf;

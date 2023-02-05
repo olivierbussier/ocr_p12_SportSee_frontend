@@ -18,10 +18,11 @@ const ReactSelect = ({
   name = "default"
 }) => {
   return (
-    <select
+    <select data-testid="user-change-id"
       value={currentValue}
       onChange={(e) => onChange(e.target.value)}
       className={className}
+      autoFocus
     >
       {options.map((option, index) => (
         <option name={option.label} key={'select_'+name+'_'+index} value={option.value}>{option.label}</option>

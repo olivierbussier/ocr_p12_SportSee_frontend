@@ -39,25 +39,15 @@ const CustomTooltip = ({ payload, active }) => {
  * @param {Number} props.userId Reference id of the user to fetch & display
  * @returns {JSX.Element} DOM of the activity week graph | error | loading
  */
-const Activite = ({ userId }) => {
+const Activite = ({ activity }) => {
   // data loading
 
-  const { isLoading, data, error } = useFetch(
-    `http://localhost:3000/user/${userId}/activity`
-  );
-
-  return error ? (
-    // In case of fetch error
-    <div className="error-fetch">
-      <p>Code: ${error.status}</p>
-      <p>Message: ${error.statusText}</p>
-    </div>
-  ) : !isLoading ? (
+  return (
     // If the data are loaded
     <div className="activity-graph">
       <h2 className="activity-graph-title">Activité quotidienne</h2>
       <ResponsiveContainer>
-        <BarChart data={data.data.sessions}>
+        <BarChart data={activity.sessions}>
           <CartesianGrid
             vertical="false"
             strokeDasharray="3"
@@ -123,14 +113,11 @@ const Activite = ({ userId }) => {
         </BarChart>
       </ResponsiveContainer>
     </div>
-  ) : (
-    // if fetch is in progresss
-    <div className="loading">Loading</div>
   );
 };
 
 Activite.propTypes = {
-  userId: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
+  activity: PropTypes.object.isRequired,
 };
 
 export default Activite;
