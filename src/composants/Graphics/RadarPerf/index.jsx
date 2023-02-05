@@ -1,4 +1,3 @@
-import useFetch from "react-fetch-hook";
 import {
   PolarAngleAxis,
   PolarGrid,
