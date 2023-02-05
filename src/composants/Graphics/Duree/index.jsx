@@ -34,6 +34,22 @@ DureeToolTip.propTypes = {
 };
 
 /**
+ * Animate background format when moving the cursor on the chart line
+ *
+ * @param {event} e - event related to mouse move
+ */
+function onMouseMove(e) {
+  const dureeWrapper = document.querySelector(".duree-chart-wrap");
+  const xPercentage = e.isTooltipActive
+    ? Math.floor((e.activeCoordinate.x / dureeWrapper.offsetWidth) * 100)
+    : null;
+
+  dureeWrapper.style.background = e.isTooltipActive
+    ? `linear-gradient(90deg, rgba(255,0,0, 1) ${xPercentage}%, rgba(0,0,0,0.1) ${xPercentage}%, rgba(0,0,0,0.1) 100%)`
+    : "transparent";
+}
+
+/**
  * This component display a Line graph with average session duration of the
  * selected user
  *
@@ -42,7 +58,6 @@ DureeToolTip.propTypes = {
  * @returns {JSX.Element} DOM corresponding to the average duration graph
  */
 const Duree = ({ average }) => {
-
   return (
     <div className="duree-chart-container">
       <div className="duree-chart-wrap">
@@ -56,6 +71,11 @@ const Duree = ({ average }) => {
               left: 8,
               bottom: 40,
             }}
+            onMouseMove={(e) => onMouseMove(e)}
+            onMouseOut={() =>
+              (document.querySelector(".duree-chart-wrap").style.background =
+                "transparent")
+            }
           >
             <CartesianGrid horizontal={false} vertical={false} />
             <XAxis
