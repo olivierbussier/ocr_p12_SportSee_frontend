@@ -29,6 +29,14 @@
     align-items: center;
     flex-direction: column;
     padding: 7px;
+    &:focus {
+      outline: none;
+    }
+  }
+  .recharts-tooltip-wrapper {
+    &:focus {
+      outline: none;
+    }
   }
   .activity-x,
   .activity-y {

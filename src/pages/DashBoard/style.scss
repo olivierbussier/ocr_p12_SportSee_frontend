@@ -1,14 +1,5 @@
 @import "../../shared/style.scss";
 
-.main {
-  position: relative;
-  // min-width: 1024px;
-  // min-height: 768px;
-  padding: 1em 0 0 1em;
-  grid-area: main;
-  background-color: white;
-  height: $min-screen-height - $width-menu;
-}
 
 .loading {
 
