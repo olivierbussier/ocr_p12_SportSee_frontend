@@ -20,7 +20,10 @@ export const Column = ({ width, children }) => {
 };
 
 Column.propTypes = {
-  children: PropTypes.object.isRequired
+  children: PropTypes.oneOfType([
+    PropTypes.element,
+    PropTypes.arrayOf(PropTypes.element)
+  ]).isRequired
 }
 
 /**
@@ -36,7 +39,7 @@ export const DashBoardWrapper = ({ children }) => {
 
 DashBoardWrapper.propTypes = {
   children: PropTypes.oneOfType([
-    PropTypes.object,
-    PropTypes.array
+    PropTypes.element,
+    PropTypes.arrayOf(PropTypes.element)
   ]).isRequired
 }

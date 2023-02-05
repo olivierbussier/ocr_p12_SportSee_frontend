@@ -32,4 +32,5 @@ Error.propTypes = {
   ]),
   text: PropTypes.string
 }
+
 export default Error;

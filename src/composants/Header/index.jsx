@@ -11,7 +11,7 @@ import "./style.scss";
  * @param {CallableFunction} props.parentChange Function to call when select box value change
  * @returns {JSX.Element} DOM of the Header zone of the dashboard
  */
-const Header = ({ firstName, currentUser, parentChange }) => {
+const Header = ({ firstName }) => {
 
   return (
     <header className="header">
@@ -27,8 +27,7 @@ const Header = ({ firstName, currentUser, parentChange }) => {
 };
 
 Header.propTypes = {
-  firstName: PropTypes.string.isRequired,
-  parentChange: PropTypes.func.isRequired,
+  firstName: PropTypes.string.isRequired
 };
 
 export default Header;

@@ -1,4 +1,7 @@
+import PropTypes from "prop-types";
 import ReactSelect from "../ReactSelect";
+
+import "./style.scss"
 
 const UserChange = ({ onChange, currentUser }) => {
   const options = [
@@ -15,5 +18,13 @@ const UserChange = ({ onChange, currentUser }) => {
     />
   );
 };
+
+UserChange.propTypes = {
+  onChange: PropTypes.func.isRequired,
+  currentUser: PropTypes.oneOfType([
+    PropTypes.number,
+    PropTypes.string
+  ]).isRequired
+}
 
 export default UserChange;

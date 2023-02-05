@@ -1,5 +1,6 @@
-import Header from "../../composants/Header";
+import PropTypes from "prop-types";
 
+import Header from "../../composants/Header";
 import { DashBoardWrapper } from "../../composants/DashboardWrapper";
 import Activite from "../../composants/Graphics/Activite";
 import Duree from "../../composants/Graphics/Duree";
@@ -16,15 +17,13 @@ import Spinner from "../../composants/Spinner";
  *
  * @returns {JSX.Element} DOM of the dashboard
  */
-const DashBoard = ({user, activity, average, performance, setUserId}) => {
+const DashBoard = ({user, activity, average, performance}) => {
 
   return (user && activity && average && performance) ? (
     <DashBoardWrapper>
       <section className="zone-header">
         <Header
           firstName={user.userInfos.firstName}
-          currentUser={user.id}
-          parentChange={(user) => setUserId(user)}
         />
       </section>
       <section className="zone-activite">
@@ -38,7 +37,7 @@ const DashBoard = ({user, activity, average, performance, setUserId}) => {
       </section>
       <section className="zone-kpi">
         <Kpi
-          value={user.todayScore ? user.todayScore : user.score}
+          value={user.todayScore}
         />
       </section>
       <section className="zone-cglp">
@@ -50,4 +49,10 @@ const DashBoard = ({user, activity, average, performance, setUserId}) => {
   );
 };
 
+DashBoard.propTypes = {
+  user: PropTypes.object,
+  activity: PropTypes.object,
+  average: PropTypes.object,
+  performance: PropTypes.object
+}
 export default DashBoard;

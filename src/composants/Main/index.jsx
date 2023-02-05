@@ -15,21 +15,26 @@ import "./style.scss";
  * @returns {JSX.Element} DOM of App Navigation (top & left)
  */
 const Main = ({ onUserChange, currentUser, children }) => {
-
   return (
     <div className="app-grid">
       <NavTop />
       <NavLeft />
-      <UserChange onChange={onUserChange} currentUser={currentUser}/>
-      <main className="main">
-        {children}
-      </main>
+      <UserChange onChange={onUserChange} currentUser={currentUser} />
+      <main className="main">{children}</main>
     </div>
   );
 };
 
 Main.propTypes = {
-  children: PropTypes.object.isRequired,
+  onUserChange: PropTypes.func.isRequired,
+  currentUser: PropTypes.oneOfType([
+    PropTypes.number,
+    PropTypes.string
+  ]).isRequired,
+  children: PropTypes.oneOfType([
+    PropTypes.element,
+    PropTypes.arrayOf(PropTypes.element),
+  ]).isRequired,
 };
 
 export default Main;

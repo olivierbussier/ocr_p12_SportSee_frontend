@@ -1,4 +1,3 @@
-import useFetch from "react-fetch-hook";
 import {
   BarChart,
   CartesianGrid,
@@ -117,7 +116,7 @@ const Activite = ({ activity }) => {
 };
 
 Activite.propTypes = {
-  activity: PropTypes.object.isRequired,
-};
+  activity: PropTypes.object.isRequired
+}
 
 export default Activite;
