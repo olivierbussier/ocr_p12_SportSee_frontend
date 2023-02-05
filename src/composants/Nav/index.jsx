@@ -87,6 +87,7 @@ export const NavLeft = () => {
       <Link to="/muscu">
         <img className="picto-link" src="../poids.svg" alt="gym" />
       </Link>
+      <div style={{height: 120}}>&nbsp</div>
       <Copyright />
     </nav>
   );

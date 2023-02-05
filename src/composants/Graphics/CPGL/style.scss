@@ -13,7 +13,7 @@
     background-color: $primary-grey-light;
     border-radius: $border-radius;
     img {
-      padding: 32px;
+      padding: 20px 10px 20px 20px;
     }
     .text-value {
       font-size: 20px;
@@ -22,7 +22,7 @@
     .text-unit {
       font-size: 14px;
       font-weight: 500;
-      color: #74798c;
+      color: $primary-grey-medium;
     }
   }
 }

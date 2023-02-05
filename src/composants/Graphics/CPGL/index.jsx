@@ -14,13 +14,17 @@ import "./style.scss";
  * @param {String} props.textUnit The unit to display below the value
  * @returns {JSX.Element} DOM of the Indic
  */
-const Indic = ({ icon, value, unit, textUnit }) => {
+const Indic = ({ icon, value, unit, textUnit, format = "fr" }) => {
   return (
     <div className="indicateur">
       <img src={icon} alt={"valeur pour " + unit} />
       <div className="text">
         <div className="text-value">
-          {value}
+          {format === "en"
+            ? new Intl.NumberFormat("en-IN", {
+                maximumSignificantDigits: 3,
+              }).format(value)
+            : value}
           {unit}
         </div>
         <div className="text-unit">{textUnit}</div>
@@ -43,12 +47,16 @@ Indic.propTypes = {
  * @param {object} props.data An object containing calories, protein, carbohydrat and lipid values
  * @returns {JSX.Element}
  */
+new Intl.NumberFormat("en-IN", {
+  maximumSignificantDigits: 3,
+}).format(1930);
 const CalProGluLip = ({ data }) => {
   return (
     <div className="cpgl-wrapper">
       <Indic
         icon="/assets/calories.svg"
         value={data.calorieCount}
+        format="en"
         unit="kCal"
         textUnit="Calories"
       />

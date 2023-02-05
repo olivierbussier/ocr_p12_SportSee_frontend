@@ -1,8 +1,10 @@
+@import "../../shared/style.scss";
+
 .container {
-  min-width: 1024px;
-  min-height: 768px;
-  max-width: 1400px;
-  margin-top: 1em;
+  min-width: $min-screen-width;
+  min-height: $min-screen-height;
+  max-width: $max-screen-width;
+  // margin-top: 1em;
   margin-left: auto;
   margin-right: auto;
 }

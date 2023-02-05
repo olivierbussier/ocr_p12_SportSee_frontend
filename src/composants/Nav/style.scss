@@ -2,7 +2,7 @@
 
 .nav-top {
   grid-area: hd;
-  background-color: #000;
+  background-color: black;
   display: flex;
   .menu {
     justify-content: space-around;
@@ -17,18 +17,18 @@
   }
 }
 .nav-left {
-  position: relative;
+  // position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 15px;
   flex-direction: column;
   grid-area: sd;
-  background-color: #000;
+  background-color: black;
   .picto-link {
     width: 64px;
     height: 64px;
-    background-color: #fff;
+    background-color: white;
     border-radius: $border-radius;
   }
   .copyright {

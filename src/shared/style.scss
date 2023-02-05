@@ -1,6 +1,20 @@
+// Main colors
 $primary-grey-light: #fbfbfb;
 $primary-grey-medium: #74798C;
 $primary-grey-anthracite: #282D30;
 $primary-red: #FF0101;
+$tooltip-red: #e60000;
+$duree-red: #ff0000;
 
+// Radius is common to all widgets in app
 $border-radius: 5px;
+
+// Represent heigth of top menu and width of left menu
+$width-menu: 90px;
+
+// Imposed minimum dimensions
+$min-screen-width: 1024px;
+$min-screen-height: 768px;
+
+// Max screen width (after this width, left & right margins grow up)
+$max-screen-width: 1400px;
