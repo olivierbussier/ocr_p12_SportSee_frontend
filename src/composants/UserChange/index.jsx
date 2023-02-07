@@ -1,12 +1,14 @@
 import PropTypes from "prop-types";
+import { createContext, useContext } from "react";
 import ReactSelect from "../ReactSelect";
 
 import "./style.scss"
 
+
 const UserChange = ({ onChange, currentUser }) => {
   const options = [
-    { value: 12, label: "Karl" },
-    { value: 18, label: "Cecilia" },
+    { value: 12, label: "User 1" },
+    { value: 18, label: "User 2" },
   ];
 
   return (

@@ -1,20 +1,17 @@
 import { Routes, Route } from "react-router-dom";
 
-import { useEffect, useState } from "react";
-import {
-  fetchActivityData,
-  fetchAverageData,
-  fetchPerformanceData,
-  fetchUserData,
-} from "./services/fetchData";
+import { createContext, useContext, useEffect, useState } from "react";
 
 import Container from "./composants/Container";
 import Main from "./composants/Main";
 import DashBoard from "./pages/DashBoard";
 import Error from "./pages/Error";
 
+import { Normalize }  from "./services/Normalize"
+import { API } from "./services/API";
+import { MockedAPI } from "./services/MockedAPI";
+
 import "./App.css";
-import { normalizeDataActivity, normalizeDataDuree, normalizeDataPerformance, normalizeDataUser } from "./services/normalizeData";
 
 function App() {
   const [userId, setUserId] = useState(12);
@@ -26,22 +23,29 @@ function App() {
 
   const [error, setError] = useState(null);
 
+  const dataMocked = true
+
+
+  const api = dataMocked ? new MockedAPI() : new API('http://localhost:3000/')
+  
+  const normalize = new Normalize();
+
   // console.log("call to <App />, userId=", userId);
 
   useEffect(() => {
-    fetchUserData(userId)
-      .then((data) => setUserData(normalizeDataUser(data)))
+    api.fetchUserData(userId)
+      .then((data) => setUserData(normalize.dataUser(data)))
       .catch((error) => setError(error));
-    fetchActivityData(userId)
-      .then((data) => setActivityData(normalizeDataActivity(data)))
+    api.fetchActivityData(userId)
+      .then((data) => setActivityData(normalize.dataActivity(data)))
       .catch((error) => setError(error));
-    fetchAverageData(userId)
-      .then((data) => setAverageData(normalizeDataDuree(data)))
+    api.fetchAverageData(userId)
+      .then((data) => setAverageData(normalize.dataDuree(data)))
       .catch((error) => setError(error));
-    fetchPerformanceData(userId)
-      .then((data) => setPerformanceData(normalizeDataPerformance(data)))
+    api.fetchPerformanceData(userId)
+      .then((data) => setPerformanceData(normalize.dataPerformance(data)))
       .catch((error) => setError(error));
-    // console.log("useEffect in <App />, userId=", userId);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userId]);
 
   return (
